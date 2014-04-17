@@ -167,7 +167,7 @@
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.5</version>
+        <version>1.5.2</version>
       </dependency>
       <dependency>
         <groupId>log4j</groupId>
@@ -183,6 +183,11 @@
         <groupId>io.netty</groupId>
         <artifactId>netty-all</artifactId>
         <version>4.0.17.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>simperf</groupId>
+        <artifactId>simperf</artifactId>
+        <version>1.0.4</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

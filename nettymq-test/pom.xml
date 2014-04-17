@@ -1,11 +1,32 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.tsui.nettymq</groupId>
-    <artifactId>nettymq-all</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>nettymq-test</artifactId>
-  <packaging>jar</packaging>
-  <name>nettymq-qatest ${project.version}</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.tsui.nettymq</groupId>
+		<artifactId>nettymq-all</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>nettymq-test</artifactId>
+	<packaging>jar</packaging>
+	<name>nettymq-qatest ${project.version}</name>
+
+	<dependencies>
+	<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>nettymq-remoting</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>simperf</groupId>
+			<artifactId>simperf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+	</dependencies>
 </project>

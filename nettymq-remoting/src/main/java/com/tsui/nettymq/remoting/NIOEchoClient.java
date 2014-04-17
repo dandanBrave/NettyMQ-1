@@ -4,17 +4,17 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.WritableByteChannel;
 
 public class NIOEchoClient {
     public NIOEchoClient() throws Exception {
-        SocketAddress rama = new InetSocketAddress("10.15.96.59", 8888);
+        SocketAddress rama = new InetSocketAddress("10.14.24.154", 8888);
         SocketChannel client = SocketChannel.open(rama);
         ByteBuffer buffer = ByteBuffer.allocate(74);
-        ReadableByteChannel in = Channels.newChannel(System.in);
-        in.read(buffer);
+        //        ReadableByteChannel in = Channels.newChannel(System.in);
+        //        in.read(buffer);
+        buffer.put("nihao".getBytes());
         buffer.flip();
         client.write(buffer);
         buffer.clear();
