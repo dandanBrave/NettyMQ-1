@@ -1,4 +1,4 @@
-package com.tsui.reactor;
+package com.tsui.nettymq.remoting;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -49,6 +49,7 @@ public class Reactor implements Runnable {
         logger.debug("-->attach(new Acceptor()!");
     }
 
+    @Override
     public void run() {
         try {
             while (!Thread.interrupted()) {
@@ -79,6 +80,7 @@ public class Reactor implements Runnable {
     }
 
     class Acceptor implements Runnable {
+        @Override
         public void run() {
             try {
                 logger.debug("-->ready for accept!");
