@@ -19,7 +19,7 @@ public class TestSimperf extends SimperfTestCase {
 
     @Test
     public void test() throws Exception {
-        Simperf perf = new Simperf(1, 1, 1, new SimperfThreadFactory() {
+        Simperf perf = new Simperf(100, 1, 10, new SimperfThreadFactory() {
             @Override
             public SimperfThread newThread() {
                 return new SimperfThread() {
@@ -36,9 +36,11 @@ public class TestSimperf extends SimperfTestCase {
                 };
             }
         });
+
         // setting output file path£¬simperf-result.log by default.
         perf.getMonitorThread().setLogFile("simperf.log");
         // begin performance testing
         perf.start();
+        Thread.sleep(10000);
     }
 }

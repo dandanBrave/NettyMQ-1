@@ -71,18 +71,29 @@ public class Reactor implements Runnable {
         }
     }
 
+    static int dispatch_count = 0;
+
     //运行Acceptor或SocketReadHandler
     void dispatch(SelectionKey k) {
         Runnable r = (Runnable) (k.attachment());
         if (r != null) {
+            System.out.println("dispatch 运行 " + (++dispatch_count) + "次");
             r.run();
         }
     }
 
+    static int acceptor_count      = 0;
+    static int acceptor_init_count = 0;
+
     class Acceptor implements Runnable {
+        public Acceptor() {
+            System.out.println("acceptor 初始化 " + (++acceptor_init_count) + "次");
+        }
+
         @Override
         public void run() {
             try {
+                System.out.println("acceptor 运行 " + (++acceptor_count) + "次");
                 logger.debug("-->ready for accept!");
                 SocketChannel socketChannel = serverSocket.accept();
                 if (socketChannel != null) {

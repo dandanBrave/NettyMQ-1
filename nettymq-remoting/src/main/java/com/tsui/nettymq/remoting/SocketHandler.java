@@ -15,17 +15,21 @@ import java.sql.Time;
 import org.apache.log4j.Logger;
 
 public class SocketHandler implements Runnable {
-    public static Logger logger  = Logger.getLogger(SocketHandler.class);
+    public static Logger logger                   = Logger.getLogger(SocketHandler.class);
 
     final SocketChannel  socket;
     final SelectionKey   sk;
 
-    static final int     READING = 0, SENDING = 1;
-    int                  state   = READING;
+    static final int     READING                  = 0, SENDING = 1;
+    int                  state                    = READING;
 
-    ByteBuffer           buffer  = ByteBuffer.allocate(1024);
+    ByteBuffer           buffer                   = ByteBuffer.allocate(1024);
+
+    static int           sockethandler_init_count = 0;
+    static int           sockethandler_count      = 0;
 
     public SocketHandler(Selector sel, SocketChannel c) throws IOException {
+        System.out.println("SocketHandler 初始化 " + (++sockethandler_init_count) + "次");
         socket = c;
         socket.configureBlocking(false);
         sk = socket.register(sel, 0);
@@ -39,7 +43,9 @@ public class SocketHandler implements Runnable {
         sel.wakeup();
     }
 
+    @Override
     public void run() {
+        System.out.println("SocketHandler 运行 " + (++sockethandler_count) + "次");
         try {
             if (state == READING) {
                 readRequest();
@@ -58,20 +64,23 @@ public class SocketHandler implements Runnable {
     private void readRequest() throws Exception {
         buffer.clear();
         int bytesRead = socket.read(buffer);
+
+        System.out.print("[" + new Time(System.currentTimeMillis()).toString() + "] 服务器接收到的字节数: "
+                         + bytesRead + ", 接收到的内容: ");
         //激活线程池 处理这些request 
         //requestHandle(new Request(socket,btt)); 
         WritableByteChannel out = Channels.newChannel(System.out);
-        System.out.println(bytesRead);
         buffer.flip();
         out.write(buffer);
         buffer.rewind();
         state = SENDING;
+        readProcess();
         //同时将SelectionKey标记为可读，以便读取。 
         sk.interestOps(SelectionKey.OP_WRITE);
     }
 
     private void readProcess() throws Exception {
-        Thread.sleep(5000);
+        Thread.sleep(10000);
         buffer.rewind();
         CharsetDecoder cd = Charset.forName("ASCII").newDecoder();
         CharBuffer charBuffer = cd.decode(buffer);
@@ -86,13 +95,18 @@ public class SocketHandler implements Runnable {
      * @throws Exception
      */
     private void writeRequest() throws Exception {
-        readProcess();
         buffer.rewind();
-        socket.write(buffer);
+        int bytesWrite = socket.write(buffer);
         if (!buffer.hasRemaining()) {
             sk.interestOps(SelectionKey.OP_READ);
         }
+        System.out.print("[" + new Time(System.currentTimeMillis()).toString() + "] 服务器发送的字节数: "
+                         + bytesWrite + ", 发送的内容: ");
+        WritableByteChannel out = Channels.newChannel(System.out);
+        buffer.flip();
+        out.write(buffer);
+        buffer.rewind();
+
         buffer.compact();
-        System.out.println(new Time(System.currentTimeMillis()).toString());
     }
 }

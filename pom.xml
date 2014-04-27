@@ -7,8 +7,12 @@
   <name>nettymq-all ${project.version}</name>
   <description>https://github.com/xmtsui/NettyMQ</description>
   <modules>
-  	<module>nettymq-remoting</module>
-  	<module>nettymq-test</module>
+    <module>nettymq-common</module>
+    <module>nettymq-remoting</module>
+    <module>nettymq-server</module>
+    <module>nettymq-store</module>
+    <module>nettymq-client</module>
+    <module>nettymq-test</module>
   </modules>
 
   <developers>
@@ -150,7 +154,27 @@
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
+        <artifactId>nettymq-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
         <artifactId>nettymq-remoting</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>nettymq-server</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>nettymq-store</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>nettymq-client</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
