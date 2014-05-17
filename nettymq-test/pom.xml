@@ -11,11 +11,11 @@
 	<name>nettymq-qatest ${project.version}</name>
 
 	<dependencies>
-	<dependency>
+		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>nettymq-remoting</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>simperf</groupId>
 			<artifactId>simperf</artifactId>
@@ -27,6 +27,16 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>jms-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
 		</dependency>
 	</dependencies>
 </project>

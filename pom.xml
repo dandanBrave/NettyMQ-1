@@ -152,6 +152,7 @@
 
   <dependencyManagement>
     <dependencies>
+      <!-- NettyMQ -->
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>nettymq-common</artifactId>
@@ -182,12 +183,25 @@
         <artifactId>nettymq-test</artifactId>
         <version>${project.version}</version>
       </dependency>
+      
+      <!-- Netty -->
+      <!--dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-all</artifactId>
+        <version>4.0.17.Final</version>
+      </dependency-->
       <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.11</version>
-        <scope>test</scope>
+        <groupId>org.jboss.netty</groupId>
+        <artifactId>netty</artifactId>
+        <version>3.2.4.Final</version>
       </dependency>
+      <dependency>
+        <groupId>simperf</groupId>
+        <artifactId>simperf</artifactId>
+        <version>1.0.4</version>
+      </dependency>
+      
+      <!-- Log -->
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
@@ -203,16 +217,32 @@
         <artifactId>slf4j-log4j12</artifactId>
         <version>1.5.2</version>
       </dependency>
+      
+      <!-- Test -->
       <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-all</artifactId>
-        <version>4.0.17.Final</version>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.11</version>
+        <scope>test</scope>
       </dependency>
+      <!-- Test : activemq -->
       <dependency>
-        <groupId>simperf</groupId>
-        <artifactId>simperf</artifactId>
-        <version>1.0.4</version>
+        <groupId>javax.jms</groupId>
+        <artifactId>jms-api</artifactId>
+        <version>1.1-rev-1</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.apache.activemq</groupId>
+        <artifactId>activemq-all</artifactId>
+        <version>5.5.1</version>
+      </dependency>
+
+      <!--dependency>
+        <groupId>org.apache.activemq</groupId>
+        <artifactId>activemq-ra</artifactId>
+        <version>5.3.2</version>
+      </dependency-->
     </dependencies>
   </dependencyManagement>
 </project>
