@@ -1,7 +1,3 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2012 All Rights Reserved.
- */
 package com.tsui.nettymq.comm;
 
 import org.apache.log4j.Logger;
@@ -14,8 +10,6 @@ import org.jboss.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepend
 
 /**
  * 通讯层 服务端初始化工厂赋值
- * @author jin.qian
- * @version $Id:NettyServerPipelineFactory.java,v 0.1 2011-4-6 上午10:56:28 jin.qian Exp $
  */
 public class NettyServerPipelineFactory implements ChannelPipelineFactory {
 
@@ -36,14 +30,13 @@ public class NettyServerPipelineFactory implements ChannelPipelineFactory {
         //添加解码器
         pipeline.addLast("frameDecoder", new ProtobufVarint32FrameDecoder());
         //        pipeline.addLast("protobufDecoder",
-        //            new ProtobufDecoder(ZBridgeMessage.ZBridgeMessageinfo.getDefaultInstance()));
         //添加编码器
         pipeline.addLast("frameEncoder", new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast("protobufEncoder", new ProtobufEncoder());
         //添加 事件处理器
         pipeline.addLast("handler", new NettyServerChannelUpStreamHandler());
         if (logger.isInfoEnabled()) {
-            logger.info("加载 ->ZbridgeMessageDecoder,ZbridgeMessageEncoder, ZbridgeServerHandler");
+            logger.info("111");
         }
         return pipeline;
     }

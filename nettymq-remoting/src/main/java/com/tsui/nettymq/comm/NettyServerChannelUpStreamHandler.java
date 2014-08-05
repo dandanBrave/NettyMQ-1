@@ -1,7 +1,3 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2012 All Rights Reserved.
- */
 package com.tsui.nettymq.comm;
 
 import org.apache.log4j.Logger;
@@ -13,8 +9,6 @@ import org.jboss.netty.channel.SimpleChannelUpstreamHandler;
 
 /**
  * 覆写SimpleChannelUpstreamHandler，实现基于nettyserver端接受消息后的处理。
- * @author jin.qian
- * @version $Id: NettyServerChannelUpStreamHandler.java,v 0.1 2012-2-6 下午05:10:46 jin.qian Exp $
  */
 public class NettyServerChannelUpStreamHandler extends SimpleChannelUpstreamHandler {
     /**日志*/
